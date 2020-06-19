@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "app.jwtSecrect",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtSecrect'"
+  },
+  {
+    "name": "app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtSecret'"
+  },
+  {
+    "name": "app.jwtEpirationMs",
+    "type": "java.lang.String",
+    "description": "A description for 'app.jwtEpirationMs'"
+  }
+]}

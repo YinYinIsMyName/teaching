@@ -1,0 +1,6 @@
+only one side reference back is called unidirectional and two side reference
+back each other is called bidirectional
+entity is same with class name
+enumrated is used for mapping with enum
+mapped by name should be property name of related role private Role role;
+in userdetailsimpl file,User user name must have the same with user in userdetailsServiceImpl file
