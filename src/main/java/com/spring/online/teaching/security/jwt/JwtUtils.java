@@ -16,7 +16,6 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
-
 @Component
 public class JwtUtils {
 
@@ -27,7 +26,7 @@ public class JwtUtils {
 	@Value("${app.jwtEpirationMs}")
 	private String jwtExpirationMs;
 	
-
+    //first to be run 
 	public String generateJwtToken(Authentication auth) {
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) auth.getPrincipal();
 		return Jwts.builder().setSubject((userPrincipal.getUsername()))
@@ -36,12 +35,13 @@ public class JwtUtils {
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 
 	}
-
+	//filter is second
+    //from filter
 	public String getUserNameFromJwtToken(String token) {
 		System.out.println(token);
 		return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
 	}
-
+   //from filter 
 	public boolean validateJwtToken(String authToken) {
 		try {
 			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);

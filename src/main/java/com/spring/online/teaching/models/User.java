@@ -1,5 +1,9 @@
 package com.spring.online.teaching.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -9,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -22,18 +27,19 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id", unique = true, nullable = false)
-	private int user_id;
+	private int userId;
 	private String name;
 	private String email;
 	private String password;
 	private String confirm_password;
 	private int role_id;
-
 //	@JsonBackReference
 //	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "role_id", referencedColumnName = "role_id")
 //	private Role role;
-//
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<UserPostContent> userIds = new HashSet<UserPostContent>();
+
 	public User() {
 	}
 
@@ -47,11 +53,11 @@ public class User {
 	}
 
 	public int getUser_id() {
-		return user_id;
+		return userId;
 	}
 
 	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+		this.userId = user_id;
 	}
 
 	public String getName() {
@@ -94,9 +100,17 @@ public class User {
 		this.role_id = role_id;
 	}
 
+	public Set<UserPostContent> getUserIds() {
+		return userIds;
+	}
+
+	public void setUserIds(Set<UserPostContent> userIds) {
+		this.userIds = userIds;
+	}
+
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", name=" + name + ", email=" + email + ", password=" + password
+		return "User [user_id=" + userId + ", name=" + name + ", email=" + email + ", password=" + password
 				+ ", confirm_password=" + confirm_password + ", role_id=" + role_id + "]";
 	}
 
