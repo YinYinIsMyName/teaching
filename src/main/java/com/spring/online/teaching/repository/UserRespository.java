@@ -16,8 +16,8 @@ public interface UserRespository extends JpaRepository<User, Integer> {
 
 	Optional<User> findByName(String name);
 
-	@Query("select new com.spring.online.teaching.payload.response.RoleResponse(u.name,r.name,u.password) from User u inner join Role r on r.role_id=u.role_id where u.name=:username")
+	@Query("select new com.spring.online.teaching.payload.response.RoleResponse (u.userId,u.name,r.name,u.password) from User u inner join Role r on r.role_id=u.role_id where u.name=:username")
 	RoleResponse findByUsername(@Param("username") String username);
 
-	User findByUserIdIn(Set<Integer> ids);
+	
 }

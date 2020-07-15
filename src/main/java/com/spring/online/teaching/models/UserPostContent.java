@@ -1,6 +1,7 @@
 package com.spring.online.teaching.models;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,31 +19,30 @@ public class UserPostContent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	public User user;
+	@JoinColumn(name = "tag_id", referencedColumnName = "tag_id")
+	public Tag tag;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "post_id", referencedColumnName = "post_id")
 	public PostContent postcontent;
 
-	@Column(name = "unique_key")
-	public String uniqueKey;
+//	@Column(name = "unique_key")
+//	public String uniqueKey;
 
 	public UserPostContent() {
 	}
 
-	public UserPostContent(User user, String uniqueKey) {
+	public UserPostContent(Tag tag) {
 		super();
-		this.user = user;
-		this.uniqueKey = uniqueKey;
+		this.tag = tag;
 	}
 
-	public User getUser() {
-		return user;
+	public Tag getTag() {
+		return tag;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setTag(Tag tag) {
+		this.tag= tag;
 	}
 
 	public PostContent getPostcontent() {
@@ -53,22 +53,13 @@ public class UserPostContent {
 		this.postcontent = postcontent;
 	}
 
-	public String getUniquekey() {
-		return uniqueKey;
-	}
-
-	public void setUniquekey(String uniquekey) {
-		this.uniqueKey = uniquekey;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((postcontent == null) ? 0 : postcontent.hashCode());
-		result = prime * result + ((uniqueKey == null) ? 0 : uniqueKey.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((tag == null) ? 0 : tag.hashCode());
 		return result;
 	}
 
@@ -88,23 +79,21 @@ public class UserPostContent {
 				return false;
 		} else if (!postcontent.equals(other.postcontent))
 			return false;
-		if (uniqueKey == null) {
-			if (other.uniqueKey != null)
+		if (tag == null) {
+			if (other.tag != null)
 				return false;
-		} else if (!uniqueKey.equals(other.uniqueKey))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
+		} else if (!tag.equals(other.tag))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "UserPostContent [id=" + id + ", user=" + user + ", postcontent=" + postcontent + ", unique_key="
-				+ uniqueKey + "]";
+		return "UserPostContent [id=" + id + ", user=" + tag + ", postcontent=" + postcontent + "]";
 	}
+
+	
+
+	
 
 }

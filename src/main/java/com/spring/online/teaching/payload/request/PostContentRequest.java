@@ -16,13 +16,13 @@ public class PostContentRequest {
 	LocalDateTime now = LocalDateTime.now();
 	String formattedDate = dtf.format(now);
 	String formattedTime = dtft.format(now);
-	@Size(min = 1, max = 20)
+	@Size(min = 1, max = 50)
 	private String content = null;
 	private String post_option = "post";
 	private String schedule_date = formattedDate;
 	private String schedule_time = formattedTime;
-	private Set<Integer> user_id;
-	private String unique_code;
+	private Set<Integer> tag_id;
+	//private String unique_code;
 
 	public String getContent() {
 		return content;
@@ -56,20 +56,20 @@ public class PostContentRequest {
 		this.schedule_time = schedule_time;
 	}
 
-	public Set<Integer> getUser_id() {
-		return user_id;
+	public Set<Integer> getTag_id() {
+		return tag_id;
 	}
 
-	public void setUser_id(Set<Integer> user_id) {
-		this.user_id = user_id;
+	public void setUser_id(Set<Integer> tag_id) {
+		this.tag_id = tag_id;
 	}
 
-	public String getUnique_code() {
-		return unique_code;
-	}
-
-	public void setUnique_code(String unique_code) {
-		this.unique_code = unique_code;
-	}
+//	public String getUnique_code() {
+//		return unique_code;
+//	}
+//
+//	public void setUnique_code(String unique_code) {
+//		this.unique_code = unique_code;
+//	}
 
 }

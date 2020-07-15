@@ -7,15 +7,24 @@ public class RoleResponse {
 	private String username;
 	private ERole role_name;
 	private String password;
-
+    private int userId;
 	public RoleResponse() {
 	}
 
-	public RoleResponse(String username, ERole role_name,String password) {
+	public RoleResponse(int userId,String username, ERole role_name,String password) {
 		super();
 		this.username = username;
 		this.role_name = role_name;
 		this.password = password;
+		this.userId= userId;
+	}
+   
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {

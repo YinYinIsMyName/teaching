@@ -37,8 +37,8 @@ public class User {
 //	@ManyToOne(fetch = FetchType.LAZY)
 //	@JoinColumn(name = "role_id", referencedColumnName = "role_id")
 //	private Role role;
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private Set<UserPostContent> userIds = new HashSet<UserPostContent>();
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private Set<UserPostContent> userIds = new HashSet<UserPostContent>();
 
 	public User() {
 	}
@@ -100,13 +100,13 @@ public class User {
 		this.role_id = role_id;
 	}
 
-	public Set<UserPostContent> getUserIds() {
-		return userIds;
-	}
-
-	public void setUserIds(Set<UserPostContent> userIds) {
-		this.userIds = userIds;
-	}
+//	public Set<UserPostContent> getUserIds() {
+//		return userIds;
+//	}
+//
+//	public void setUserIds(Set<UserPostContent> userIds) {
+//		this.userIds = userIds;
+//	}
 
 	@Override
 	public String toString() {

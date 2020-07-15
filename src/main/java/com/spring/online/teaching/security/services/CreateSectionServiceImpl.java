@@ -26,7 +26,7 @@ public class CreateSectionServiceImpl {
 
 	@Transactional
 	public void createSection(CreateSection section) {
-       System.out.println(section.getCurrentTime());
+		System.out.println(section.getCurrentTime());
 		createsectionrepository.save(section);
 	}
 
@@ -50,7 +50,7 @@ public class CreateSectionServiceImpl {
 	}
 
 	public CreateSection EditSectionById(long id, CreateSectionRequest request) {
-		
+
 		Optional<CreateSection> createSection = createsectionrepository.findById(id);
 		if (createSection.isPresent()) {
 			CreateSection _section = createSection.get();
@@ -67,7 +67,15 @@ public class CreateSectionServiceImpl {
 			return null;
 		}
 	}
+
 	public void test() {
 		System.out.println("hello");
+	}
+
+	public CreateSection readSection(String unique_code) {
+
+		CreateSection readSection = createsectionrepository.findByUniqueKey(unique_code);
+
+		return readSection;
 	}
 }

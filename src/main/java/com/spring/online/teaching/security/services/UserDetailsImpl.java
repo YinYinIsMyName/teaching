@@ -23,17 +23,28 @@ public class UserDetailsImpl implements UserDetails {
 	private String name;
 	private String password;
 	private String authorities;
-	public UserDetailsImpl(String name, String role_name, String password) {
+	private int userId;
+
+	public UserDetailsImpl(String name, String role_name, String password, int userId) {
 		super();
 		this.name = name;
 		this.authorities = role_name;
 		this.password = password;
+		this.userId = userId;
 	}
 
 	public static UserDetailsImpl build(RoleResponse user) {
 		String authorities = user.getRole_name().name();
-		return new UserDetailsImpl(user.getUsername(), authorities, user.getPassword());
+		return new UserDetailsImpl(user.getUsername(), authorities, user.getPassword(), user.getUserId());
 
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getName() {
@@ -47,7 +58,6 @@ public class UserDetailsImpl implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
